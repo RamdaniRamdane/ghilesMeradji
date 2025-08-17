@@ -1,7 +1,13 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 // Mock data - replace with your actual images
 const workCategories = {
@@ -11,6 +17,9 @@ const workCategories = {
       "/ident/1.jpg",
       "/ident/2.jpg",
       "/ident/3.png",
+      "/ident/nekm.png",
+      "/png/test.png",
+      "/ident/5.jpg",
     ]
   },
   "packaging": {
@@ -20,12 +29,16 @@ const workCategories = {
       "/pack/alura2.jpg",
       "/pack/behar1.jpg",
       "/pack/behar2.jpg",
+      "/pack/mariebelle.jpg",
+      "/pack/soufFine1.jpg",
 
     ]
   },
   "print": {
     title: "Print (Affiches, Brochures, Dépliants, Roll up banner...)",
     images: [
+      "/png/test.png",
+      "/png/test.png",
       "/png/test.png",
       "/png/test.png",    ]
   },
@@ -36,91 +49,18 @@ const workCategories = {
       "/res/innovation1.jpg",    
       "/res/yusraPosts.jpg",    
       "/res/yusraPosts2.jpg",    
+      "/res/produitBio1.jpg",    
     ]
   },
   "events": {
     title: "Events (Projets Complets)",
     images: [
       "/png/test.png",
+      "/png/test.png",
+      "/png/test.png",
       "/png/test.png",    ]
   }
 };
-
-function Carousel({ images, autoPlay = true }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (!autoPlay || images.length <= 1) return;
-    
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [images.length, autoPlay]);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  if (images.length === 0) return null;
-
-  return (
-    <div className="relative w-full h-100 rounded-lg overflow-hidden group">
-      <div 
-        className="flex transition-transform duration-500 ease-in-out h-full"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {images.map((image, index) => (
-          <div key={index} className="w-full h-full flex-shrink-0 relative">
-            <Image
-              src={image}
-              alt={`Work ${index + 1}`}
-              fill
-              className="object-contain"
-              onError={(e) => {
-                e.target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzlmYTJhOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIFBsYWNlaG9sZGVyPC90ZXh0Pjwvc3ZnPg==";
-              }}
-            />
-          </div>
-        ))}
-      </div>
-      
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          >
-            <ChevronLeft className="w-5 h-5 text-gray-700" />
-          </button>
-          <button
-            onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          >
-            <ChevronRight className="w-5 h-5 text-gray-700" />
-          </button>
-          
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  index === currentIndex ? 'bg-white' : 'bg-white/50'
-                }`}
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
@@ -164,16 +104,16 @@ export default function Home() {
 
               <button
                 onClick={() => scrollToSection('about')}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  activeSection === 'about' ? 'font-bold' : ' hover:font-bold'
+                className={`text-white text-sm font-medium transition-colors duration-200 hover:text-yellow-500 ${
+                  activeSection === 'about' ? 'border-b-white border-b-4' : ''
                 }`}
               >
                 À propos
               </button>
               <button
                 onClick={() => scrollToSection('work')}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  activeSection === 'work' ? 'font-bold' : ' hover:font-bold'                }`}
+                className={`text-white text-sm font-medium transition-colors duration-200  hover:text-yellow-500${
+                  activeSection === 'work' ? 'border-b-white border-b-4' : ''                }`}
               >
                 Travaux
               </button>
@@ -206,7 +146,7 @@ export default function Home() {
          />
         </div>
         <div className="flex flex-col justify-center items-start pl-0 sm:pl-20 sm:pr-3 "> 
-          <h1 className="font-custom text-[#374a9a] text-2xl font-bold border-b-[4px] border-b-[#374a9a] w-max ">Moi, Ghiles Meradji, </h1>
+          <h1 className="font-dancing text-[#374a9a] text-2xl border-b-[4px] border-b-[#374a9a] w-max ">Moi, Ghiles Meradji, </h1>
           <p className="text-black">
              je propose des solutions créatives en design graphique 
              (identité visuelle, packaging, supports de communication) et en community 
@@ -218,10 +158,10 @@ export default function Home() {
       </div>      </section>
 
       {/* Work Section */}
-      <section id="work" className="py-20 bg-[#374a9a]">
+      <section id="work" className="py-20 bg-[#374a9a] ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold  mb-4">
+            <h2 className=" text-white text-3xl font-bold  mb-4">
               Mes Travaux
             </h2>
             <p className="text-gray-200 max-w-2xl mx-auto">
@@ -229,14 +169,33 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-20">
+          <div className="space-y-10 ">
             {Object.entries(workCategories).map(([key, category]) => (
               <div key={key} className="space-y-8">
-                <h3 className="text-2xl font-bold text-gray-200 text-center">
+                <h3 className="text-2xl font-bold text-gray-200 text-start">
                   {category.title}
                 </h3>
-                <Carousel images={category.images} />
-              </div>
+                  <Carousel className="w-full overflow-hidden">
+                    <CarouselContent className="-ml-2 md:-ml-4">
+                      {category.images.map((img, index) => (
+                        <CarouselItem
+                          key={index}
+                          className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+                        >
+                          <Image
+                            src={img}
+                            alt={`${category.title} ${index + 1}`}
+                            width={600}
+                            height={400}
+                            className="w-full h-64 object-cover rounded-xl"
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                                </div>
             ))}
           </div>
         </div>
