@@ -143,6 +143,7 @@ export default function Home() {
           width={1000}
           height={1000}
           alt="Picture of the author"
+          loading="lazy"
          />
         </div>
         <div className="flex flex-col justify-center items-start pl-0 sm:pl-20 sm:pr-3 "> 
@@ -188,6 +189,7 @@ export default function Home() {
                             width={600}
                             height={400}
                             className="w-full h-64 object-cover rounded-xl"
+                            loading="lazy"
                           />
                         </CarouselItem>
                       ))}
@@ -212,6 +214,7 @@ export default function Home() {
                 height={32}
                 alt="Ghiles Meradji"
                 className="h-8 w-auto object-contain"
+                loading="lazy"
               />
             </div>
             
