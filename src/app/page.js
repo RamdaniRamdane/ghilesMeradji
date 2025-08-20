@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import { GiPointing } from "react-icons/gi";
+import { MdOutlineWork } from "react-icons/md";
 import { useState, useEffect } from "react";
 import {
   Carousel,
@@ -37,10 +39,15 @@ const workCategories = {
   "print": {
     title: "Print (Affiches, Brochures, Dépliants, Roll up banner...)",
     images: [
-      "/png/test.webp",
-      "/png/test.webp",
-      "/png/test.webp",
-      "/png/test.webp",    ]
+      "/print/brochure1.jpg",
+      "/print/card.jpg",
+      "/print/carte2.jpg",
+      "/print/menu1.jpg",
+      "/print/menu2.jpg",
+      "/print/notebook1.jpg",
+      "/print/poster2.jpg",
+      "/print/rollup.jpg",
+    ]
   },
   "social": {
     title: "Social Media Posts",
@@ -55,10 +62,17 @@ const workCategories = {
   "events": {
     title: "Events (Projets Complets)",
     images: [
-      "/png/test.webp",
-      "/png/test.webp",
-      "/png/test.webp",
-      "/png/test.webp",    ]
+      "/event/A3Poster.jpg",
+      "/event/Cuptalentueux.jpg",
+      "/event/affiche1.jpg",
+      "/event/badge.jpg",
+      "/event/ibturenMug.jpg",
+      "/event/idcard.jpg",
+      "/event/poster3.jpg",
+      "/event/rollup.jpg",
+      "/event/ticket1.jpg",
+      "/event/ticket2.jpg",
+   ]
   }
 };
 
@@ -121,7 +135,7 @@ export default function Home() {
             
             <div className="h-12 w-auto">
               <Image
-                src="/png/signatureP.webp"
+                src="/png/signaturePw.webp"
                 width={120}
                 height={48}
                 alt="Ghiles Meradji Logo"
@@ -162,9 +176,12 @@ export default function Home() {
       <section id="work" className="py-20 bg-[#374a9a] ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
+           <div className="flex flex-row justify-center">
+           <MdOutlineWork className="text-white text-3xl "/>
             <h2 className=" text-white text-3xl font-bold  mb-4">
               Mes Travaux
             </h2>
+           </div>
             <p className="text-gray-200 max-w-2xl mx-auto">
               Découvrez une sélection de mes projets dans différents domaines du design graphique
             </p>
@@ -172,10 +189,14 @@ export default function Home() {
 
           <div className="space-y-10 ">
             {Object.entries(workCategories).map(([key, category]) => (
-              <div key={key} className="space-y-8">
-                <h3 className="text-2xl font-bold text-gray-200 text-start">
-                  {category.title}
-                </h3>
+              <div key={key} className="space-y-8 ">
+                <div className="flex items-center gap-3">
+                  <GiPointing className="text-3xl text-white"/>
+                  <h3 className="text-white text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap">
+                    {category.title}
+                  </h3>
+                  <div className="h-px flex-1 border-t-4 border-dashed border-white/60"></div>
+                </div>
                   <Carousel className="w-full overflow-hidden">
                     <CarouselContent className="-ml-2 md:-ml-4">
                       {category.images.map((img, index) => (
@@ -188,7 +209,7 @@ export default function Home() {
                             alt={`${category.title} ${index + 1}`}
                             width={600}
                             height={400}
-                            className="w-full h-64 object-cover rounded-xl"
+                            className="w-full h-64 object-cover rounded-xl bg-[#404a9f]"
                             loading="lazy"
                           />
                         </CarouselItem>
@@ -222,7 +243,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4">
               <Image
-                src="/png/signatureP.png"
+                src="/png/signatureP.webp"
                 width={80}
                 height={32}
                 alt="Ghiles Meradji"
