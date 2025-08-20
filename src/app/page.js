@@ -109,7 +109,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#374a9a]">
+    <div className="flex flex-col min-h-screen bg-[#374a9a] w-full overflow-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 w-full backdrop-blur-sm z-50  bg-[#374a9a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
