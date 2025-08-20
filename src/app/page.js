@@ -14,51 +14,51 @@ const workCategories = {
   "branding": {
     title: "Branding et Identité Visuelle",
     images: [
-      "/ident/1.jpg",
-      "/ident/2.jpg",
-      "/ident/3.png",
-      "/ident/nekm.png",
-      "/png/test.png",
-      "/ident/5.jpg",
+      "/ident/1.webp",
+      "/ident/2.webp",
+      "/ident/3.webp",
+      "/ident/nekm.webp",
+      "/png/test.webp",
+      "/ident/5.webp",
     ]
   },
   "packaging": {
     title: "Packaging Products",
     images: [
-      "/pack/alura1.jpg",
-      "/pack/alura2.jpg",
-      "/pack/behar1.jpg",
-      "/pack/behar2.jpg",
-      "/pack/mariebelle.jpg",
-      "/pack/soufFine1.jpg",
+      "/pack/alura1.webp",
+      "/pack/alura2.webp",
+      "/pack/behar1.webp",
+      "/pack/behar2.webp",
+      "/pack/mariebelle.webp",
+      "/pack/soufFine1.webp",
 
     ]
   },
   "print": {
     title: "Print (Affiches, Brochures, Dépliants, Roll up banner...)",
     images: [
-      "/png/test.png",
-      "/png/test.png",
-      "/png/test.png",
-      "/png/test.png",    ]
+      "/png/test.webp",
+      "/png/test.webp",
+      "/png/test.webp",
+      "/png/test.webp",    ]
   },
   "social": {
     title: "Social Media Posts",
     images: [
-      "/res/bledArt.jpg",
-      "/res/innovation1.jpg",    
-      "/res/yusraPosts.jpg",    
-      "/res/yusraPosts2.jpg",    
-      "/res/produitBio1.jpg",    
+      "/res/bledArt.webp",
+      "/res/innovation1.webp",    
+      "/res/yusraPosts.webp",    
+      "/res/yusraPosts2.webp",    
+      "/res/produitBio1.webp",    
     ]
   },
   "events": {
     title: "Events (Projets Complets)",
     images: [
-      "/png/test.png",
-      "/png/test.png",
-      "/png/test.png",
-      "/png/test.png",    ]
+      "/png/test.webp",
+      "/png/test.webp",
+      "/png/test.webp",
+      "/png/test.webp",    ]
   }
 };
 
@@ -121,7 +121,7 @@ export default function Home() {
             
             <div className="h-12 w-auto">
               <Image
-                src="/png/signatureP.png"
+                src="/png/signatureP.webp"
                 width={120}
                 height={48}
                 alt="Ghiles Meradji Logo"
@@ -139,7 +139,7 @@ export default function Home() {
       <div className=" flex flex-col w-full bg-white sm:flex-row border-b-4 border-t-3 border-dashed border-black h-[100%] ">
         <div className="relative">
          <Image
-          src="/png/picQuiSuisJe.png"
+          src="/png/picQuiSuisJe.webp"
           width={1000}
           height={1000}
           alt="Picture of the author"
@@ -194,8 +194,21 @@ export default function Home() {
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                     <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow-lg rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                          className="h-6 w-6 text-[#374a9a]" 
+                          fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </CarouselPrevious>
+                    
+                      <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow-lg rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                          className="h-6 w-6 text-[#374a9a]" 
+                          fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </CarouselNext>
                   </Carousel>
                                 </div>
             ))}
